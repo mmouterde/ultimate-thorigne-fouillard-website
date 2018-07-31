@@ -1,0 +1,74 @@
+/*!
+ * Start Bootstrap - Busines Frontpage (https://startbootstrap.com/template-overviews/business-frontpage)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-frontpage/blob/master/LICENSE)
+ */
+
+.business-header {
+  height: 60vh;
+  min-height: 300px;
+  background: url("../images/hero_Micheal_Dufour_CC BY-NC 2.0.jpg") center
+    center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  background-position-y: 30%;
+}
+
+.copyright_hero {
+  transform-origin: left;
+  transform: rotate(90deg) translate(-26px, -4px);
+  font-size: 8px;
+}
+
+.card {
+  height: 100%;
+}
+
+.logo {
+  position: relative;
+  float: left;
+  width: 16.6666666667%;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  top: -15px;
+}
+
+.logo a {
+  display: block;
+  position: absolute;
+}
+
+.logo a img {
+  width: 8vw;
+}
+
+.endPhone:before {
+  content: "79";
+}
+
+img.card-img-top {
+  max-width: 200px;
+  margin: auto;
+}
+
+.welcome {
+  margin-top: 10vw;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+a:link {
+  color: #556779;
+  text-decoration: underline;
+}
+
+a:visited {
+  color: #556779;
+  text-decoration: underline;
+}
+
+footer {
+  margin-top: 5vw;
+}
