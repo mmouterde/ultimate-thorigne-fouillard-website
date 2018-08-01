@@ -18,7 +18,7 @@
 
 .copyright_hero {
   transform-origin: left;
-  transform: rotate(90deg) translate(-26px, -4px);
+  transform: rotate(90deg) translate(-5%, -4px);
   font-size: 8px;
 }
 
