@@ -5,10 +5,9 @@
  */
 
 .business-header {
-  /* height: 60vh; */
+  height: 60vh;
   min-height: 300px;
-  background: url("../images/hero_Micheal_Dufour_CC BY-NC 2.0.jpg") center
-    center no-repeat scroll;
+  background: url("../images/team20182019.jpg") center center no-repeat scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
