@@ -11,10 +11,12 @@
     "autoprefixer": "^9.8.5",
     "cross-env": "^7.0.2",
     "cssnano": "^4.1.10",
+    "express": "^4.17.1",
     "gulp": "^4.0.2",
     "gulp-live-server": "0.0.31",
     "gulp-postcss": "^8.0.0",
     "prettier": "^1.14.0",
+    "static-dev-server": "^1.0.0",
     "tailwindcss": "^1.5.1"
   }
 }

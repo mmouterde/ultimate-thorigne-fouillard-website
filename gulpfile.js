@@ -3,6 +3,7 @@ const postcss = require("gulp-postcss");
 const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
+const path = require("path");
 var gls = require("gulp-live-server");
 
 const build = gulp.task("build", function() {
@@ -21,13 +22,20 @@ const build = gulp.task("build", function() {
 });
 
 gulp.task("serve", function() {
-  var server = gls.static("./", 8888);
-  server.start();
+  const express = require("express");
+  const app = express();
 
-  gulp.watch(["./**/*.css", "./**/*.html"], function(file) {
-    server.notify.apply(server, [file]);
+  app.use((req, res, next) => {
+    if (req.path === "/style.css") {
+      res.sendFile(
+        path.join(__dirname, "./node_modules/tailwindcss/dist/tailwind.min.css")
+      );
+    } else {
+      next();
+    }
   });
+  app.use(express.static("./"));
+  app.listen(8888, () => console.log("app listening on port 8888!"));
 
-  gulp.watch(["./src/**/*.css"], build);
-
+  gulp.watch(["./**/*.css", "./**/*.html"], build);
 });
