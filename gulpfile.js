@@ -1,41 +1,33 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var pkg = require('./package.json');
+const gulp = require("gulp");
+const postcss = require("gulp-postcss");
+const tailwindcss = require("tailwindcss");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+var gls = require("gulp-live-server");
 
-// Copy third party libraries from /node_modules into /vendor
-gulp.task('vendor', function() {
-
-  // Bootstrap
-  gulp.src([
-      './node_modules/bootstrap/dist/**/*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-grid*',
-      '!./node_modules/bootstrap/dist/css/bootstrap-reboot*'
-    ])
-    .pipe(gulp.dest('./vendor/bootstrap'))
-
-  // jQuery
-  gulp.src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
-    ])
-    .pipe(gulp.dest('./vendor/jquery'))
-
-})
-
-// Default task
-gulp.task('default', ['vendor']);
-
-// Configure the browserSync task
-gulp.task('browserSync', function() {
-  browserSync.init({
-    server: {
-      baseDir: "./"
-    }
-  });
+const build = gulp.task("build", function() {
+  return gulp
+    .src("./src/style.css")
+    .pipe(
+      postcss([
+        tailwindcss,
+        autoprefixer,
+        cssnano({
+          preset: "default"
+        })
+      ])
+    )
+    .pipe(gulp.dest("./"));
 });
 
-// Dev task
-gulp.task('dev', ['browserSync'], function() {
-  gulp.watch('./css/*.css', browserSync.reload);
-  gulp.watch('./*.html', browserSync.reload);
+gulp.task("serve", function() {
+  var server = gls.static("./", 8888);
+  server.start();
+
+  gulp.watch(["./**/*.css", "./**/*.html"], function(file) {
+    server.notify.apply(server, [file]);
+  });
+
+  gulp.watch(["./src/**/*.css"], build);
+
 });
