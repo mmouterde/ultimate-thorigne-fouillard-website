@@ -4,9 +4,8 @@ const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 const cssnano = require("cssnano");
 const path = require("path");
-var gls = require("gulp-live-server");
 
-const build = gulp.task("build", function() {
+const build = gulp.task("build", function () {
   return gulp
     .src("./src/style.css")
     .pipe(
@@ -14,14 +13,14 @@ const build = gulp.task("build", function() {
         tailwindcss,
         autoprefixer,
         cssnano({
-          preset: "default"
-        })
+          preset: "default",
+        }),
       ])
     )
     .pipe(gulp.dest("./"));
 });
 
-gulp.task("serve", function() {
+gulp.task("serve", function () {
   const express = require("express");
   const app = express();
 
